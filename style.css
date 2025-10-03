@@ -1,0 +1,202 @@
+/* 基础样式 */
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #0F172A;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Microsoft Yahei", sans-serif;
+    overflow: hidden;
+}
+
+.card {
+    width: 800px;
+    height: 500px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 0 80px rgba(255, 215, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    animation: cardFloat 10s ease-in-out infinite alternate;
+}
+
+/* 新增：星空背景 */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.stars::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 30px 50px, #fff, transparent),
+        radial-gradient(1px 1px at 70px 120px, #fff, transparent),
+        radial-gradient(2px 2px at 120px 80px, #fff, transparent),
+        radial-gradient(1px 1px at 180px 200px, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 250px 250px;
+    animation: starTwinkle 3s ease-in-out infinite alternate;
+}
+@keyframes starTwinkle {
+    0% { opacity: 0.4; }
+    100% { opacity: 0.9; }
+}
+
+/* 国旗样式 */
+.flag {
+    position: absolute;
+    width: 180px;
+    height: 120px;
+    bottom: -120px;
+    left: 60px;
+    opacity: 0;
+    object-fit: contain;
+    animation: 
+        flagRise 1.8s ease-out forwards 0.5s,
+        flagSwing 3s ease-in-out infinite alternate 2s;
+    z-index: 2;
+}
+@keyframes flagRise {
+    0% { bottom: -120px; opacity: 0; }
+    100% { bottom: 220px; opacity: 1; }
+}
+@keyframes flagSwing {
+    0% { transform: rotate(-2deg); }
+    100% { transform: rotate(2deg); }
+}
+
+/* 月亮样式 */
+.moon-wrapper {
+    position: absolute;
+    right: -200px;
+    top: 105px;
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    animation: moonSlideIn 2s ease-out forwards 1.2s;
+    z-index: 3;
+    overflow: visible;
+}
+@keyframes moonSlideIn {
+    0% { right: -200px; opacity: 0; }
+    100% { right: 60px; opacity: 1; }
+}
+
+.moon-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 
+        0 0 5px rgba(255, 215, 0, 1),
+        0 0 40px rgba(255, 215, 0, 0.8),
+        0 0 80px rgba(255, 215, 0, 0.6);
+    z-index: 1;
+    animation: glowPulse 4s ease-in-out infinite alternate;
+}
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 5px rgba(255,215,0,1), 0 0 40px rgba(255,215,0,0.8), 0 0 80px rgba(255,215,0,0.6); }
+    100% { box-shadow: 0 0 10px rgba(255,215,0,1), 0 0 60px rgba(255,215,0,0.9), 0 0 120px rgba(255,215,0,0.7); }
+}
+
+.moon {
+    position: absolute;
+    width: 102%;
+    height: 102%;
+    object-fit: cover;
+    transform: translate(-1%, -1%);
+    background: transparent;
+    z-index: 2;
+    cursor: pointer;
+}
+
+/* 新增：桂花飘落 */
+.osmanthus {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+.osmanthus span {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    opacity: 0;
+    animation: osmanthusFall linear infinite;
+}
+@keyframes osmanthusFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+    100% { transform: translateY(520px) rotate(360deg); opacity: 0; }
+}
+
+/* 文字组 */
+.text-group {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0;
+    animation: textShow 1.5s ease forwards 3s;
+    z-index: 4;
+    cursor: pointer;
+}
+@keyframes textShow {
+    0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.title {
+    font-size: 48px;
+    color: #C91F37;
+    margin: 0;
+    text-shadow: 0 0 25px rgba(201, 31, 55, 0.7);
+}
+
+.subtitle {
+    font-size: 36px;
+    color: #FFD700;
+    margin: 10px 0 0 0;
+    text-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
+}
+
+.tip {
+    font-size: 14px;
+    color: #666666;
+    margin-top: 15px;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .card {
+        width: 90%;
+        height: 400px;
+    }
+    .flag {
+        width: 120px;
+        height: 80px;
+        left: 40px;
+    }
+    .moon-wrapper {
+        width: 150px;
+        height: 150px;
+        top: 65px;
+    }
+    .title { font-size: 36px; }
+    .subtitle { font-size: 28px; }
+}
+    

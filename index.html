@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国庆中秋双节贺卡</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <!-- 新增：星空背景 -->
+        <div class="stars"></div>
+        
+        <!-- 新增：桂花飘落容器 -->
+        <div class="osmanthus" id="osmanthusContainer"></div>
+        
+        <!-- 国旗 -->
+        <img src="素材/flag.png" class="flag" alt="五星红旗">
+        
+        <!-- 月亮 -->
+        <div class="moon-wrapper">
+            <div class="moon-glow"></div>
+            <img src="素材/moon_final.png" class="moon" alt="中秋圆月">
+        </div>
+        
+        <!-- 文字组 -->
+        <div class="text-group">
+            <h1 class="title">国泰民安</h1>
+            <h2 class="subtitle">花好月圆</h2>
+            <p class="tip">点击文字播放音乐 | 点击圆月看烟花</p>
+        </div>
+        
+        <!-- 音频 -->
+        <audio id="bgm" src="素材/bgm.mp3"></audio>
+        <audio id="fireworkSound" src="素材/firework.mp3"></audio>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+    
